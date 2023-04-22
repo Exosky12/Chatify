@@ -13,7 +13,6 @@ type FriendRequestsProps = {
     sessionId: string
 }
 const FriendRequests = ({sessionId, incomingFriendRequests}: FriendRequestsProps) => {
-    const router = useRouter()
     const [friendRequests, setFriendRequests] = useState<IncomingFriendRequest[]>(
         incomingFriendRequests
     )
@@ -50,7 +49,6 @@ const FriendRequests = ({sessionId, incomingFriendRequests}: FriendRequestsProps
                 prev.filter((request) => request.senderId !== senderId)
             )
 
-            router.refresh()
         } catch (error) {
             toast.error('Une erreur est survenue')
         }
@@ -64,7 +62,6 @@ const FriendRequests = ({sessionId, incomingFriendRequests}: FriendRequestsProps
                 prev.filter((request) => request.senderId !== senderId)
             )
 
-            router.refresh()
         } catch (error) {
             toast.error('Une erreur est survenue')
         }
