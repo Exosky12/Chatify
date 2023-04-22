@@ -1,4 +1,4 @@
-import {MailPlusIcon, UserPlus, Send, LucideProps} from 'lucide-react'
+import {MailPlusIcon, UserPlus, Send } from 'lucide-react'
 
 export const Icons = {
     MailPlusIcon,
