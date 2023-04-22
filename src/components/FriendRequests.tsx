@@ -5,7 +5,6 @@ import {Check, UserPlus, X} from "lucide-react";
 import { toPusherKey } from '@/lib/utils'
 import { pusherClient } from '@/lib/pusher'
 import axios from "axios";
-import {useRouter} from "next/navigation";
 import {toast} from "react-hot-toast";
 
 type FriendRequestsProps = {
