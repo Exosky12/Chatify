@@ -1,6 +1,8 @@
 lockfileVersion: 5.4
 
 specifiers:
+  '@headlessui/react': ^1.7.14
+  '@heroicons/react': ^2.0.17
   '@hookform/resolvers': ^3.1.0
   '@next-auth/upstash-redis-adapter': ^3.0.4
   '@tailwindcss/forms': ^0.5.3
@@ -24,6 +26,7 @@ specifiers:
   next: 13.3.0
   next-auth: ^4.22.0
   nodemailer: ^6.9.1
+  outline: link:heroicons/react/24/outline
   postcss: 8.4.21
   pusher: ^5.1.2
   pusher-js: ^8.0.2
@@ -38,6 +41,8 @@ specifiers:
   zod: ^3.21.4
 
 dependencies:
+  '@headlessui/react': 1.7.14_biqbaboplfbrettd7655fr4n2y
+  '@heroicons/react': 2.0.17_react@18.2.0
   '@hookform/resolvers': 3.1.0_react-hook-form@7.43.9
   '@next-auth/upstash-redis-adapter': 3.0.4_dmxdqibyclp2vy5otsgazgtz7e
   '@tailwindcss/forms': 0.5.3_tailwindcss@3.3.1
@@ -61,6 +66,7 @@ dependencies:
   next: 13.3.0_biqbaboplfbrettd7655fr4n2y
   next-auth: 4.22.0_jf7w2qxa4s3zu4kxtjttjlli3m
   nodemailer: 6.9.1
+  outline: link:heroicons/react/24/outline
   postcss: 8.4.21
   pusher: 5.1.2_encoding@0.1.13
   pusher-js: 8.0.2
@@ -118,6 +124,26 @@ packages:
   /@eslint/js/8.38.0:
     resolution: {integrity: sha512-IoD2MfUnOV58ghIHCiil01PcohxjbYR/qCxsoC+xNgUwh1EY8jOOrYmu3d3a71+tJJ23uscEV4X2HJWMsPJu4g==}
     engines: {node: ^12.22.0 || ^14.17.0 || >=16.0.0}
+    dev: false
+
+  /@headlessui/react/1.7.14_biqbaboplfbrettd7655fr4n2y:
+    resolution: {integrity: sha512-znzdq9PG8rkwcu9oQ2FwIy0ZFtP9Z7ycS+BAqJ3R5EIqC/0bJGvhT7193rFf+45i9nnPsYvCQVW4V/bB9Xc+gA==}
+    engines: {node: '>=10'}
+    peerDependencies:
+      react: ^16 || ^17 || ^18
+      react-dom: ^16 || ^17 || ^18
+    dependencies:
+      client-only: 0.0.1
+      react: 18.2.0
+      react-dom: 18.2.0_react@18.2.0
+    dev: false
+
+  /@heroicons/react/2.0.17_react@18.2.0:
+    resolution: {integrity: sha512-90GMZktkA53YbNzHp6asVEDevUQCMtxWH+2UK2S8OpnLEu7qckTJPhNxNQG52xIR1WFTwFqtH6bt7a60ZNcLLA==}
+    peerDependencies:
+      react: '>= 16'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /@hookform/resolvers/3.1.0_react-hook-form@7.43.9:
