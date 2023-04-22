@@ -2,7 +2,7 @@ import { authOptions } from '@/lib/auth';
 import { getServerSession } from 'next-auth';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { ReactNode } from 'react';
+import React, { ReactNode } from 'react';
 import { Icons, Icon } from "@/components/Icons";
 import SignOutButton from "@/components/SignOutButton";
 import FriendRequestsSideBarOptions from "@/components/FriendRequestsSideBarOptions";
@@ -10,6 +10,7 @@ import {fetchRedis} from "@/helpers/redis";
 import {getFriendsByUserId} from "@/helpers/getFriendsByUserId";
 import ChatList from "@/components/ChatList";
 import MobileLayout from "@/components/MobileLayout/MobileLayout";
+import Image from "next/image";
 
 type LayoutProps = {
 	children: ReactNode;
@@ -57,7 +58,12 @@ const Layout = async ({ children }: LayoutProps) => {
 					</div>
 							<div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto bg-neutral-950 px-6'>
 								<Link href={'/dashboard'} className="flex h-8 mt-12 shrink-0 items-center">
-									<Icons.Logo className='h-8 w-auto text-[#10A37F]' />
+									<Image
+										src="/logo.png"
+										alt="Chatify logo"
+										width={500}
+										height={500}
+									/>
 								</Link>
 
 								<nav className="flex flex-1 flex-col">
@@ -119,8 +125,13 @@ const Layout = async ({ children }: LayoutProps) => {
 							unseenRequestCount={unseenRequestCount}/>
 					</div>
 					<div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto bg-neutral-950 px-6'>
-						<Link href={'/dashboard'} className="flex h-8 mt-12 shrink-0 items-center">
-							<Icons.Logo className='h-full w-full text-[#10A37F]' />
+						<Link href={'/dashboard'} className="flex h-12 mt-12 shrink-0 items-center">
+							<Image
+								src="logo.png"
+								alt="Chatify logo"
+								width={500}
+								height={500}
+							/>
 						</Link>
 
 						<nav className="flex mt-2 flex-1 flex-col">
