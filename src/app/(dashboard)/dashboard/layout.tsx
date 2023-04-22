@@ -9,6 +9,7 @@ import FriendRequestsSideBarOptions from "@/components/FriendRequestsSideBarOpti
 import {fetchRedis} from "@/helpers/redis";
 import {getFriendsByUserId} from "@/helpers/getFriendsByUserId";
 import ChatList from "@/components/ChatList";
+import MobileLayout from "@/components/MobileLayout/MobileLayout";
 
 type LayoutProps = {
 	children: ReactNode;
@@ -47,6 +48,13 @@ const Layout = async ({ children }: LayoutProps) => {
 			{friends.length > 0 ? (
 
 				<div className='w-full flex h-screen'>
+					<div className={"md:hidden"}>
+						<MobileLayout
+							friends={friends}
+							session={session}
+							sidebarOptions={sidebarOptions}
+							unseenRequestCount={unseenRequestCount} />
+					</div>
 							<div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto bg-neutral-950 px-6'>
 								<Link href={'/dashboard'} className="flex h-8 mt-12 shrink-0 items-center">
 									<Icons.Logo className='h-8 w-auto text-[#10A37F]' />
@@ -101,7 +109,15 @@ const Layout = async ({ children }: LayoutProps) => {
 				</div>
 
 			): (
+
 				<div className='w-full flex h-screen'>
+					<div className={"md:hidden"}>
+						<MobileLayout
+							friends={friends}
+							session={session}
+							sidebarOptions={sidebarOptions}
+							unseenRequestCount={unseenRequestCount}/>
+					</div>
 					<div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto bg-neutral-950 px-6'>
 						<Link href={'/dashboard'} className="flex h-8 mt-12 shrink-0 items-center">
 							<Icons.Logo className='h-full w-full text-[#10A37F]' />
@@ -154,6 +170,7 @@ const Layout = async ({ children }: LayoutProps) => {
 					</div>
 					{children}
 				</div>
+
 			)}
 		</>
 	);
