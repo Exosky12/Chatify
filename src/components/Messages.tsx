@@ -70,16 +70,16 @@ const Messages = ({ initialMessages, sessionId, ChatID }: MessagesProps) => {
                                     }
                                 )}>
                 <span
-                    className={cn('px-4 py-2 rounded-lg inline-block max-w-[50vw] overflow-hidden break-words', {
+                    className={cn('px-4 py-2 rounded-lg inline-block lg:max-w-[50vw] md:max-w-[70vw] overflow-hidden break-words', {
                         'bg-[#10A37F] text-white': isCurrentUser,
-                        'bg-gray-200 text-gray-900': !isCurrentUser,
+                        'bg-indigo-600 text-white': !isCurrentUser,
                         'rounded-br-none':
                             !hasNextMessageFromSameUser && isCurrentUser,
                         'rounded-bl-none':
                             !hasNextMessageFromSameUser && !isCurrentUser,
                     })}>
                   {message.text}{' '}
-                    <span className='ml-2 text-xs text-gray-400'>
+                    <span className='ml-2 text-xs text-gray-50'>
                         {formatTimestamp(message.timestamp)}
                   </span>
                 </span>
