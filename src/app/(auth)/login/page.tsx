@@ -4,7 +4,7 @@ import { Button } from '@/components/ui/Button';
 import React, { useState } from 'react';
 import { signIn } from 'next-auth/react';
 import { toast } from 'react-hot-toast';
-import { Icons } from "@/components/Icons";
+import Image from 'next/image';
 
 const Page = () => {
 	const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -32,7 +32,12 @@ const Page = () => {
 				className='flex flex-col items-center w-full max-w-md m-auto mt-24 space-y-8'
 				onSubmit={(e) => login(e)}>
 				<h1 className='mb-12 font-bold tracking-tight text-center'>
-					<Icons.Logo className='h-2 w-2' />
+					<Image
+						src="/logo.png"
+						alt="Chatify logo"
+						width={500}
+						height={500}
+					/>
 				</h1>
 				<input
 					type='text'
