@@ -28,14 +28,14 @@ const ChatInput = ({ chatPartner, ChatID }: ChatInputProps) => {
         // On mets le focus sur le texte area
         textareaRef.current?.focus()
         try {
-
-            // On envoi le message en db
-            await axios.post('/api/message/send', { text: input, ChatID: ChatID })
-
             // On vide l'input
             setInput('')
+
+            // On envoie le message en db
+            await axios.post('/api/message/send', { text: input, ChatID: ChatID })
+
         } catch (error) {
-            // On afficeh l'erreur dans le toast
+            // On affiche l'erreur dans le toast
             toast.error('Une erreur est survenue')
         } finally {
             // Une fois le mssage envoye en db́, on mets loading à false
