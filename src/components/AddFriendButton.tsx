@@ -2,7 +2,7 @@
 
 import { addFriendValidator } from '@/lib/validations/add-friend'
 import axios, { AxiosError } from 'axios'
-import React, { FC, useState } from 'react'
+import React, { useState } from 'react'
 import { z } from 'zod'
 import {Button} from "@/components/ui/Button";
 import {toast} from "react-hot-toast";
