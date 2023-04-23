@@ -56,7 +56,7 @@ const AddFriendButton = () => {
     if(showSuccessState) setShowSuccessState(false)
 
     return (
-        <form onSubmit={(event) => handleSubmit(event)} className='w-96 m-auto'>
+        <form onSubmit={(event) => handleSubmit(event)} className='w-[80vw] m-auto md:w-[50vw]'>
             <label
                 htmlFor='email'
                 className='block text-sm font-medium leading-6'>
