@@ -32,8 +32,8 @@ const sidebarOptions: sideBarOption[] = [
 	},
 ]
 const Layout = async ({ children }: LayoutProps) => {
-	const session = await getServerSession(authOptions);
-	if (!session) notFound();
+	const session = await getServerSession(authOptions)
+	if (!session) notFound()
 
 	const friends = await getFriendsByUserId(session.user.id);
 
@@ -127,7 +127,7 @@ const Layout = async ({ children }: LayoutProps) => {
 					<div className='hidden md:flex h-full w-full max-w-xs grow flex-col gap-y-5 overflow-y-auto bg-neutral-950 px-6'>
 						<Link href={'/dashboard'} className="flex h-12 mt-12 shrink-0 items-center">
 							<Image
-								src="logo.png"
+								src="/logo.png"
 								alt="Chatify logo"
 								width={500}
 								height={500}
