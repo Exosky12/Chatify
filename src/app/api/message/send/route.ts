@@ -30,12 +30,9 @@ export async function POST(req: Request){
         if(!isFriend) return new Response('Non autorisé', {status: 401})
 
         const unParsedSender = await fetchRedis('get', `user:${session.user.id}`) as string
-        console.log('This is the sender: ', unParsedSender)
         const parsedSender = JSON.parse(unParsedSender) as User
-        console.log(parsedSender)
 
         const timestamp = Date.now()
-
 
         const messageData: Message = {
             id: nanoid(),
