@@ -137,20 +137,20 @@ export const authOptions: NextAuthOptions = {
 ```ts
 adapter: UpstashRedisAdapter(db),
 ```
-> C'est l'adapter NextAuth avec la base de données Upstash et Redis l'outil que j'ai utilisé pour communiquer avec la bdd.
+> C'est l'adapter NextAuth avec la base de données Upstash et Redis l'outil que j'ai utilisé pour communiquer avec la bdd. <br>
 
 ```ts
 session: {
 		strategy: 'jwt',
 	},
 ```
-> Ici je défini le type de strategy pour la session ( JWT )
+> Ici je défini le type de strategy pour la session ( JWT ) <br>
 ```ts
 pages: {
 		signIn: '/login',
 	},
 ```
-> C'est l'url de la page de connexion.
+> C'est l'url de la page de connexion. <br>
 ```ts
 providers: [
 		EmailProvider({
@@ -166,4 +166,39 @@ providers: [
 		}),
 	],
 ```
-> Ici c'est l'EmailProvider, je fournis les variables d'environnement nécessaires afin de pouvoir envoyer les mails automatiquement via SMTP.
+> Ici c'est l'EmailProvider, je fournis les variables d'environnement nécessaires afin de pouvoir envoyer les mails automatiquement via SMTP. <br>
+```ts
+async jwt({ token, user }) {
+			const dbUserResult = (await fetchRedis('get', `user:${token.id}`)) as
+				| string
+				| null
+
+			if (!dbUserResult) {
+				if (user) {
+					token.id = user!.id
+				}
+
+				return token
+			}
+
+			const dbUser = JSON.parse(dbUserResult) as User
+
+			return {
+				id: dbUser.id,
+				email: dbUser.email,
+			};
+		},
+async session({ session, token }) {
+			if (token) {
+				session.user.id = token.id;
+				session.user.email = token.email;
+			}
+
+			return session;
+		},
+		redirect() {
+			return '/dashboard/add';
+		},
+```
+> Ici je vais chercher dans la bdd avec la méthode get et le contenu user suivi de l'id du token.
+> Ensuite je vérifie si un utilisateur a été trouvé, pour ensuite retourner la session et rediriger l'utilisateur vers la page **/dashboard/add**
