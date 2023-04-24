@@ -63,7 +63,8 @@ Aussi, afin de protéger son compte, si le token a déjà été utilisé, alors 
 </p>
 En cliquant sur "Sign in" vous allez être redirigé vers un lien comme celui-ci: **https://u33729675.ct.sendgrid.net/ls/click?upn=263EgPbMQBA-2BUO0DFxCWrV0bUOTn2i7uPCmioamrsKa3GmbTs1tLHJe2t-2B3k-2F6Y0XYckj9F1znGjrEr7GOusdbhG4L9pg1hO-2FO1Iyuycvdzso4UWvM-2BtS85VkALk-2FOsmLyFbwPN4zq-2FB1WH5SifcKJvp0moMEt75Qe7NxDNJMWizYPQ8N8PeWhkm2FdKYGVqaijs34G6IwyUZgQ26zx56SyZjbLJzndBxBEdo141vQCO5LyNiPLN2NUO9RaXz0lVuCH91FuFt-2Bfjlh0YgR7TtA-3D-3Do1CO_S-2FUYHH11vcKC2JHZzpUnJhJNaivGXcdrd0pU-2BtRMyxG9T-2Fx4jS9l4DcCbx9sVGzXsIexgeyy0P-2Btbue8hsnzawRTiMHK7uahCg-2B7tTMXWu9eN-2BMe6nvblbZaykjDR1kf-2Bi2zuL-2BxaOs-2BT60xTMiJxLoLhbuUOZ84fSyHNrUYLA3LzCrxFsrEBlPebOtpvgDZDrGjX5EwFLQNHTnqBMK0khKbMpP2PpGBDXyim5r0Fws-3D**
 C'est un token JWT (JSON Web Token), ça va vérifier que le token JWT de ce lien existe en database, si il exsite, alors il connecte l'utilisateur en lui créeant une session persistante, si non, il redirige vers une page d'erreur comme ci-dessus. <br>
-Voici le code pour intégrer ce système de magic link:
+Voici le code pour intégrer ce système de magic link: <br>
+
 ```ts
 import { NextAuthOptions } from 'next-auth';
 import EmailProvider from 'next-auth/providers/email';
