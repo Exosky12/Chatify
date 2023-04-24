@@ -137,15 +137,13 @@ export const authOptions: NextAuthOptions = {
 ```ts
 adapter: UpstashRedisAdapter(db),
 ```
-> C'est l'adapter NextAuth avec la base de données Upstash et Redis l'outil que j'ai utilisé pour communiquer avec la bdd. <br>
-<br>
+> C'est l'adapter NextAuth avec la base de données Upstash et Redis l'outil que j'ai utilisé pour communiquer avec la bdd. <br><br>
 ```ts
 session: {
 		strategy: 'jwt',
 	},
 ```
-> Ici je défini le type de strategy pour la session ( JWT ) <br>
-<br>
+> Ici je défini le type de strategy pour la session ( JWT ) <br><br>
 ```ts
 pages: {
 		signIn: '/login',
@@ -168,8 +166,7 @@ providers: [
 		}),
 	],
 ```
-> Ici c'est l'EmailProvider, je fournis les variables d'environnement nécessaires afin de pouvoir envoyer les mails automatiquement via SMTP. <br>
-<br>
+> Ici c'est l'EmailProvider, je fournis les variables d'environnement nécessaires afin de pouvoir envoyer les mails automatiquement via SMTP. <br><br>
 ```ts
 async jwt({ token, user }) {
 			const dbUserResult = (await fetchRedis('get', `user:${token.id}`)) as
