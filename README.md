@@ -43,11 +43,11 @@ yarn install
 - 🔐 [**API sécurisée**](#API-sécurisée)
 
 ### 👤 **Magic link**
-Pour s'authentifier sur Chatify, l'utilisateur doit entrer son adresse e-mail dans ce formulaire: <br>
+Pour s'authentifier sur Chatify, l'utilisateur doit entrer son adresse e-mail dans ce formulaire: <br><br>
 <p align="center">
     <img src="https://media.discordapp.net/attachments/714830431886901349/1100018801073991772/image.png" height="300">
 </p>
-Une fois cliqué sur **"Envoyer le magic link"**, l'utilisateur recevera quelques instants plus tard, un mail comme celui-ci: <br>
+Une fois cliqué sur **"Envoyer le magic link"**, l'utilisateur recevera quelques instants plus tard, un mail comme celui-ci: <br><br>
 <p align="center">
     <img src="https://media.discordapp.net/attachments/714830431886901349/1100019700097884262/image.png?width=1260&height=556" height="300">
 </p>
@@ -66,8 +66,8 @@ En cliquant sur "Sign in" vous allez être redirigé vers un lien comme celui-ci
 > https://u33729675.ct.sendgrid.net/ls/click?upn=263EgPbMQBA-2BUO0DFxCWrV0bUOTn2i7uPCmioamrsKa3GmbTs1tLHJe2t-2B3k-2F6Y0XYckj9F1znGjrEr7GOusdbhG4L9pg1hO-2FO1Iyuycvdzso4UWvM-2BtS85VkALk-2FOsmLyFbwPN4zq-2FB1WH5SifcKJvp0moMEt75Qe7NxDNJMWizYPQ8N8PeWhkm2FdKYGVqaijs34G6IwyUZgQ26zx56SyZjbLJzndBxBEdo141vQCO5LyNiPLN2NUO9RaXz0lVuCH91FuFt-2Bfjlh0YgR7TtA-3D-3Do1CO_S-2FUYHH11vcKC2JHZzpUnJhJNaivGXcdrd0pU-2BtRMyxG9T-2Fx4jS9l4DcCbx9sVGzXsIexgeyy0P-2Btbue8hsnzawRTiMHK7uahCg-2B7tTMXWu9eN-2BMe6nvblbZaykjDR1kf-2Bi2zuL-2BxaOs-2BT60xTMiJxLoLhbuUOZ84fSyHNrUYLA3LzCrxFsrEBlPebOtpvgDZDrGjX5EwFLQNHTnqBMK0khKbMpP2PpGBDXyim5r0Fws-3D
 
 <br>
-C'est un token JWT (JSON Web Token), ça va vérifier que le token JWT de ce lien existe en database, si il exsite, alors il connecte l'utilisateur en lui créeant une session persistante, si non, il redirige vers une page d'erreur comme ci-dessus. <br>
-Voici le code pour intégrer ce système de magic link: <br>
+C'est un token JWT (JSON Web Token), il va vérifier que le token JWT de ce lien existe en database, si il exsite, alors il connecte l'utilisateur en lui créeant une session persistante, si non, il redirige vers une page d'erreur comme ci-dessus. <br>
+Voici le code pour intégrer ce système de magic link: <br><br>
 
 ```ts
 import { NextAuthOptions } from 'next-auth';
@@ -132,3 +132,38 @@ export const authOptions: NextAuthOptions = {
 	},
 };
 ```
+#### Explication du code
+
+```ts
+adapter: UpstashRedisAdapter(db),
+```
+> C'est l'adapter NextAuth avec la base de données Upstash et Redis l'outil que j'ai utilisé pour communiquer avec la bdd.
+
+```ts
+session: {
+		strategy: 'jwt',
+	},
+```
+> Ici je défini le type de strategy pour la session ( JWT )
+```ts
+pages: {
+		signIn: '/login',
+	},
+```
+> C'est l'url de la page de connexion.
+```ts
+providers: [
+		EmailProvider({
+			server: {
+				host: process.env.EMAIL_SERVER_HOST,
+				port: process.env.EMAIL_SERVER_PORT,
+				auth: {
+					user: process.env.EMAIL_SERVER_USER,
+					pass: process.env.EMAIL_SERVER_PASSWORD,
+				},
+			},
+			from: process.env.EMAIL_FROM,
+		}),
+	],
+```
+> Ici c'est l'EmailProvider, je fournis les variables d'environnement nécessaires afin de pouvoir envoyer les mails automatiquement via SMTP.
