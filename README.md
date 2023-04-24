@@ -35,7 +35,7 @@ yarn install
 
 ## Fonctionnalitées
 
-- 👤 [**Magic link**](#Magic-link)
+- 👤 [**Magic link**](#-magic-link)
 - ➕ [**Ajouter des amis**](#Ajouter-des-amis)
 - ⛔ [**Gestion d'erreurs**](#Gestion-d'erreurs)
 - 📱  [**Responsive**](#Responsive)
