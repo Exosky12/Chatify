@@ -8,7 +8,7 @@
 
 ## Installation
 
-Vous pouvez accéder a Chatify par plusieurs moyens: 
+Vous pouvez accéder a Chatify par plusieurs moyens: <br>
 <a href="https://chatify-exosky.vercel.app/">> En vous rendant sur le site internet hébergé sur vercel.</a>
 > Ou en hébergeant chatify directement en local sur votre ordinateur, pour cela:
 - Veuillez d'abord cloner le repository github:
