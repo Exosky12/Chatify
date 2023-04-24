@@ -32,3 +32,12 @@ pnpm install
 ```sh
 yarn install
 ```
+
+## Fonctionnalitées
+
+- 👤 **Magic link**(#Magic link)
+- ➕ **Ajouter des amis**(#Ajouter des amis)
+- ⛔ **Gestion d'erreurs**(#Gestion d'erreurs)
+- 📱 **Responsive**(#Responsive)
+- 🔔 **Notifications**(#Notifications)
+- 🔐 **API sécurisée**(#API sécurisée)
