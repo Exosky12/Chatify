@@ -5,3 +5,30 @@
 </p>
 <h1 align="center">Chatify</h1>
 <p align="center">Web realtime chat app.</p>
+
+## Installation
+
+Vous pouvez accéder a Chatify par plusieurs moyens: 
+<a href="https://chatify-exosky.vercel.app/">> En vous rendant sur le site internet hébergé sur vercel.</a>
+> Ou en hébergeant chatify directement en local sur votre ordinateur, pour cela:
+- Veuillez d'abord cloner le repository github:
+```sh
+git clone https://github.com/Exosky12/Chatify.git
+```
+Ensuite, veuillez naviguer à l'intérieur du dossier:
+```sh
+cd Chatify
+```
+Par la suite vous devrez installer les dépendances du projets:
+> Avec npm:
+```sh
+npm install
+```
+> Avec pnpm:
+```sh
+pnpm install
+```
+> Avec yarn:
+```sh
+yarn install
+```
