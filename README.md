@@ -19,7 +19,7 @@ git clone https://github.com/Exosky12/Chatify.git
 ```sh
 cd Chatify
 ```
-- Par la suite vous devrez installer les dépendances du projets:
+- Par la suite vous devrez installer les dépendances du projet:
 > Avec npm:
 ```sh
 npm install
