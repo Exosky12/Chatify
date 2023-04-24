@@ -93,8 +93,6 @@ export const authOptions: NextAuthOptions = {
 			from: process.env.EMAIL_FROM,
 		}),
 	],
-	```
-	```ts
 	callbacks: {
 		async jwt({ token, user }) {
 			const dbUserResult = (await fetchRedis('get', `user:${token.id}`)) as
