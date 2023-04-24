@@ -9,17 +9,17 @@
 ## Installation
 
 Vous pouvez accéder a Chatify par plusieurs moyens: <br><br>
-<a href="https://chatify-exosky.vercel.app/">-> En vous rendant sur le site internet hébergé sur vercel.</a> <br>
+<a href="https://chatify-exosky.vercel.app/">-> En vous rendant sur le site internet hébergé sur vercel.</a> <br><br>
 -> Ou en hébergeant chatify directement en local sur votre ordinateur, pour cela:
 - Veuillez d'abord cloner le repository github:
 ```sh
 git clone https://github.com/Exosky12/Chatify.git
 ```
-Ensuite, veuillez naviguer à l'intérieur du dossier:
+- Ensuite, veuillez naviguer à l'intérieur du dossier:
 ```sh
 cd Chatify
 ```
-Par la suite vous devrez installer les dépendances du projets:
+- Par la suite vous devrez installer les dépendances du projets:
 > Avec npm:
 ```sh
 npm install
