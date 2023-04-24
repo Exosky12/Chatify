@@ -52,7 +52,7 @@ Une fois cliqué sur **"Envoyer le magic link"**, l'utilisateur recevera quelque
     <img src="https://media.discordapp.net/attachments/714830431886901349/1100019700097884262/image.png?width=1260&height=556" height="300">
 </p>
 Cet e-mail est envoyé automatiquement à chaque envoie du magic link par <a href="https://sendgrid.com/">sendgrid</a>, un protocole SMTP envoie le mail en créant un nouveau token.<br>
-Dans la base de données, ce token ressemble à ceci: <br>
+Dans la base de données, ce token ressemble à ceci: <br><br>
 <p align="center">
     <img src="https://media.discordapp.net/attachments/714830431886901349/1100021445607817276/image.png" height="100">
 </p>
