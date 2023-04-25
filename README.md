@@ -149,8 +149,7 @@ pages: {
 		signIn: '/login',
 	},
 ```
-> C'est l'url de la page de connexion. <br>
-<br>
+> C'est l'url de la page de connexion. <br><br>
 ```ts
 providers: [
 		EmailProvider({
