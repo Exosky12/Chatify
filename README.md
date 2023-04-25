@@ -211,6 +211,7 @@ Pour ajouter des amis sur Chatify il faut se rendre sur la page /dashboard/add. 
 Après avoir rentré l'e-mail de de l'utilisateur que vous voulez ajouter, et après avoir cliqué sur **ajouter**, une série de vérifications vont s'effectuer:
 <br>
 Voici le code pour ajouter un utilisateur: <br><br>
+
 ```ts
 const addFriend = async (email: string) => {
         try {
