@@ -313,26 +313,26 @@ await pusherServer.trigger(
 > Voici à quoi ressemble les différentes notifcations:
 <br>
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316305527165028/image.png" height="200">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316305527165028/image.png" height="100">
 </p>
 <br>
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316492664426506/image.png" height="200">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316492664426506/image.png" height="100">
 </p>
 <br>
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316642552061962/image.png" height="200">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316642552061962/image.png" height="100">
 </p>
 <br>
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317652636942356/image.png" height="200">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317652636942356/image.png" height="100">
 </p>
 <br>
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317865225224234/image.png" height="200">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317865225224234/image.png" height="100">
 </p>
 <br>
 <p align="center">
-    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317576338354176/image.png" height="200">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317576338354176/image.png" height="100">
 </p>
 <br>
