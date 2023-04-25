@@ -201,3 +201,149 @@ async session({ session, token }) {
 ```
 > Ici je vais chercher dans la bdd avec la méthode get et le contenu user suivi de l'id du token.
 > Ensuite je vérifie si un utilisateur a été trouvé, pour ensuite retourner la session et rediriger l'utilisateur vers la page **/dashboard/add**
+<br><br>
+### ➕ **Ajouter des amis**
+Pour ajouter des amis sur Chatify il faut se rendre sur la page /dashboard/add. <br><br>
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100309858978369537/image.png" height="300">
+</p>
+<br>
+Après avoir rentré l'e-mail de de l'utilisateur que vous voulez ajouter, et après avoir cliqué sur **ajouter**, une série de vérifications vont s'effectuer:
+<br>
+Voici le code pour ajouter un utilisateur:
+<br>
+```ts
+const addFriend = async (email: string) => {
+        try {
+            const validatedEmail = addFriendValidator.parse({ email })
+
+            await axios.post('/api/friends/add', {
+                email: validatedEmail,
+            })
+            setShowSuccessState(true)
+
+        } catch (error) {
+            setShowSuccessState(false)
+
+            if (email === '') {
+                toast.error('Veuillez entrer un email')
+                return
+            }
+
+            if (error instanceof z.ZodError) {
+                toast.error('Veuillez entrer un email valide')
+                return
+            }
+
+            if (error instanceof AxiosError) {
+                toast.error(error.response?.data)
+                return
+            }
+
+            toast.error('Une erreur est survenue')
+        }
+    }
+```
+Cette constante est une fonction qui prend en paramètre **email** qui est la valeur de l'input. <br>
+J'utilise un try catch pour effectuer la requête à l'endpoint de l'api. <br>
+<br>
+#### Explication du code
+<br>
+```ts
+if (email === '') {
+                toast.error('Veuillez entrer un email')
+                return
+            }
+```
+Cette vérification vérifie que l'e-mail n'est pas vide alors j'affiche une notification avec le contenu: "'Veuillez entrer un email".
+<br>
+```ts
+if (error instanceof z.ZodError) {
+                toast.error('Veuillez entrer un email valide')
+                return
+            }
+```
+Ici je vérifie que c'est un e-mail valide, de ce type: xxxx@xxxx.xx, alors j'affiche une notification avec le contenu: "Veuillez entrer un email valide".
+<br>
+```ts
+ if (error instanceof AxiosError) {
+                toast.error(error.response?.data)
+                return
+            }
+```
+Ici je vérifie que l'erreur n'est pas une instance de AxiosError, si elle l'est, alors j'affiche une notification avec le contenu de l'erreur.
+Voici quelques autres vérfications qui se déroulent dans le back-end, c'est ce qui donnera le contenu de l'erreur à l'erreur ci-dessus.
+<br>
+```ts
+const session = await getServerSession(authOptions)
+
+        if(!session) return new Response('Non autorisé', { status: 401 })
+```
+Ici je vérifie si l'utilisateur est connecté, s'il ne l'est pas, dans ce cas là la notification affichée en front-end sera: "Non autorisé"
+<br>
+```ts
+const idToAdd = await fetchRedis('get', `user:email:${emailToAdd}`) as string
+if(!idToAdd) return new Response("Cette personne n'existe pas", { status: 400 })
+```
+Ici je vérifie si l'utilsateur que vous essayez d'ajouter existe en bdd, dans ce cas là la notification affichée en front-end sera: "Cette personne n'existe pas"
+<br>
+```ts
+if(idToAdd === session.user.id) return new Response("Vous ne pouvez pas vous ajouter vous même", { status: 400 })
+```
+Ici je vérifie si l'ID de l'e-mail que vous essayez d'ajouter n'est pas le votre, dans ce cas là la notification affichée en front-end sera: "Vous ne pouvez pas vous ajouter vous même"
+<br>
+```ts
+const isAlreadyAdded = (await fetchRedis('sismember', `user:${idToAdd}:incoming_friend_requests`, session.user.id)) as 0 | 1
+if(isAlreadyAdded) return new Response("Vous avez déjà envoyé une demande d'ami à cette personne", { status: 400 })
+```
+Ici je vérifie que vous n'avez pas déjà envoyé une demande d'ami à cette utilisateur, dans ce cas là la notification affichée en front-end sera: "Vous avez déjà envoyé une demande d'ami à cette personne"
+<br>
+```ts
+const isAlreadyFriends = (await fetchRedis('sismember', `user:${session.user.id}:friends`, idToAdd)) as 0 | 1
+if(isAlreadyFriends) return new Response("Vous êtes déjà ami avec cette personne", { status: 400 })
+```
+Ici je vérifie que vous n'êtes pas déjà ami avec cette personne, dans ce cas là la notification affichée en front-end sera: "Vous êtes déjà ami avec cette personne"
+<br>
+```ts
+await pusherServer.trigger(
+            toPusherKey(`user:${idToAdd}:incoming_friend_requests`),
+            'incoming_friend_requests',
+            {
+                senderId: session.user.id,
+                senderEmail: session.user.email,
+            }
+        )
+
+        await db.sadd(`user:${idToAdd}:incoming_friend_requests`, session.user.id)
+
+        return new Response('OK')
+```
+Une fois toutes ces vérifications éfféctuées, je suis sur que la demande est conforme, alors j'ajoute l'utilisateur en ami en bdd.
+<br>
+<br>
+Voici à quoi ressemble les différentes notifcations:
+<br>
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316305527165028/image.png" height="300">
+</p>
+<br>
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316492664426506/image.png" height="300">
+</p>
+<br>
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100316642552061962/image.png" height="300">
+</p>
+<br>
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317652636942356/image.png" height="300">
+</p>
+<br>
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317865225224234/image.png" height="300">
+</p>
+<br>
+<p align="center">
+    <img src="https://media.discordapp.net/attachments/714830431886901349/1100317576338354176/image.png" height="300">
+</p>
+<br>
