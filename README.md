@@ -309,7 +309,8 @@ await pusherServer.trigger(
 
         return new Response('OK')
 ```
-> Une fois toutes ces vérifications éfféctuées, je suis sur que la demande est conforme, alors j'ajoute l'utilisateur en ami en bdd.<br><br><br>
+> Une fois toutes ces vérifications éfféctuées, je suis sur que la demande est conforme, alors j'ajoute l'utilisateur en ami en bdd.<br><br>
+<br>
 > Voici à quoi ressemble les différentes notifcations:
 <br>
 <p align="center">
