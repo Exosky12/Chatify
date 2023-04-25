@@ -210,8 +210,7 @@ Pour ajouter des amis sur Chatify il faut se rendre sur la page /dashboard/add. 
 <br>
 Après avoir rentré l'e-mail de de l'utilisateur que vous voulez ajouter, et après avoir cliqué sur **ajouter**, une série de vérifications vont s'effectuer:
 <br>
-Voici le code pour ajouter un utilisateur:
-<br>
+Voici le code pour ajouter un utilisateur: <br><br>
 ```ts
 const addFriend = async (email: string) => {
         try {
@@ -263,8 +262,7 @@ if (error instanceof z.ZodError) {
                 return
             }
 ```
-Ici je vérifie que c'est un e-mail valide, de ce type: xxxx@xxxx.xx, alors j'affiche une notification avec le contenu: "Veuillez entrer un email valide".
-<br>
+Ici je vérifie que c'est un e-mail valide, de ce type: xxxx@xxxx.xx, alors j'affiche une notification avec le contenu: "Veuillez entrer un email valide". <br> <br>
 ```ts
  if (error instanceof AxiosError) {
                 toast.error(error.response?.data)
@@ -272,38 +270,32 @@ Ici je vérifie que c'est un e-mail valide, de ce type: xxxx@xxxx.xx, alors j'af
             }
 ```
 Ici je vérifie que l'erreur n'est pas une instance de AxiosError, si elle l'est, alors j'affiche une notification avec le contenu de l'erreur.
-Voici quelques autres vérfications qui se déroulent dans le back-end, c'est ce qui donnera le contenu de l'erreur à l'erreur ci-dessus.
-<br>
+Voici quelques autres vérfications qui se déroulent dans le back-end, c'est ce qui donnera le contenu de l'erreur à l'erreur ci-dessus. <br> <br>
 ```ts
 const session = await getServerSession(authOptions)
 
         if(!session) return new Response('Non autorisé', { status: 401 })
 ```
-Ici je vérifie si l'utilisateur est connecté, s'il ne l'est pas, dans ce cas là la notification affichée en front-end sera: "Non autorisé"
-<br>
+Ici je vérifie si l'utilisateur est connecté, s'il ne l'est pas, dans ce cas là la notification affichée en front-end sera: "Non autorisé". <br> <br>
 ```ts
 const idToAdd = await fetchRedis('get', `user:email:${emailToAdd}`) as string
 if(!idToAdd) return new Response("Cette personne n'existe pas", { status: 400 })
 ```
-Ici je vérifie si l'utilsateur que vous essayez d'ajouter existe en bdd, dans ce cas là la notification affichée en front-end sera: "Cette personne n'existe pas"
-<br>
+Ici je vérifie si l'utilsateur que vous essayez d'ajouter existe en bdd, dans ce cas là la notification affichée en front-end sera: "Cette personne n'existe pas". <br><br>
 ```ts
 if(idToAdd === session.user.id) return new Response("Vous ne pouvez pas vous ajouter vous même", { status: 400 })
 ```
-Ici je vérifie si l'ID de l'e-mail que vous essayez d'ajouter n'est pas le votre, dans ce cas là la notification affichée en front-end sera: "Vous ne pouvez pas vous ajouter vous même"
-<br>
+Ici je vérifie si l'ID de l'e-mail que vous essayez d'ajouter n'est pas le votre, dans ce cas là la notification affichée en front-end sera: "Vous ne pouvez pas vous ajouter vous même". <br><br>
 ```ts
 const isAlreadyAdded = (await fetchRedis('sismember', `user:${idToAdd}:incoming_friend_requests`, session.user.id)) as 0 | 1
 if(isAlreadyAdded) return new Response("Vous avez déjà envoyé une demande d'ami à cette personne", { status: 400 })
 ```
-Ici je vérifie que vous n'avez pas déjà envoyé une demande d'ami à cette utilisateur, dans ce cas là la notification affichée en front-end sera: "Vous avez déjà envoyé une demande d'ami à cette personne"
-<br>
+Ici je vérifie que vous n'avez pas déjà envoyé une demande d'ami à cette utilisateur, dans ce cas là la notification affichée en front-end sera: "Vous avez déjà envoyé une demande d'ami à cette personne". <br><br>
 ```ts
 const isAlreadyFriends = (await fetchRedis('sismember', `user:${session.user.id}:friends`, idToAdd)) as 0 | 1
 if(isAlreadyFriends) return new Response("Vous êtes déjà ami avec cette personne", { status: 400 })
 ```
-Ici je vérifie que vous n'êtes pas déjà ami avec cette personne, dans ce cas là la notification affichée en front-end sera: "Vous êtes déjà ami avec cette personne"
-<br>
+Ici je vérifie que vous n'êtes pas déjà ami avec cette personne, dans ce cas là la notification affichée en front-end sera: "Vous êtes déjà ami avec cette personne".<br><br>
 ```ts
 await pusherServer.trigger(
             toPusherKey(`user:${idToAdd}:incoming_friend_requests`),
