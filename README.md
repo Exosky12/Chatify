@@ -311,7 +311,9 @@ await pusherServer.trigger(
 ```
 > Une fois toutes ces vérifications éfféctuées, je suis sur que la demande est conforme, alors j'ajoute l'utilisateur en ami en bdd.<br><br>
 <br>
+
 > Voici à quoi ressemble les différentes notifcations:
+> 
 <br>
 <p align="center">
     <img src="https://media.discordapp.net/attachments/714830431886901349/1100316305527165028/image.png" height="100">
