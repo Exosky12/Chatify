@@ -210,7 +210,7 @@ Pour ajouter des amis sur Chatify il faut se rendre sur la page /dashboard/add. 
 <br>
 Après avoir rentré l'e-mail de de l'utilisateur que vous voulez ajouter, et après avoir cliqué sur **ajouter**, une série de vérifications vont s'effectuer:
 <br>
-Voici le code pour ajouter un utilisateur:
+Voici le code pour ajouter un utilisateur: <br><br>
 ```ts
 const addFriend = async (email: string) => {
         try {
@@ -247,15 +247,13 @@ Cette constante est une fonction qui prend en paramètre **email** qui est la va
 J'utilise un try catch pour effectuer la requête à l'endpoint de l'api. <br>
 <br>
 #### Explication du code
-<br>
 ```ts
 if (email === '') {
                 toast.error('Veuillez entrer un email')
                 return
             }
 ```
-> Cette vérification vérifie que l'e-mail n'est pas vide alors j'affiche une notification avec le contenu: "Veuillez entrer un email".
-<br>
+> Cette vérification vérifie que l'e-mail n'est pas vide alors j'affiche une notification avec le contenu: "Veuillez entrer un email". <br><br>
 ```ts
 if (error instanceof z.ZodError) {
                 toast.error('Veuillez entrer un email valide')
@@ -310,9 +308,7 @@ await pusherServer.trigger(
 
         return new Response('OK')
 ```
-> Une fois toutes ces vérifications éfféctuées, je suis sur que la demande est conforme, alors j'ajoute l'utilisateur en ami en bdd.
-<br>
-<br>
+> Une fois toutes ces vérifications éfféctuées, je suis sur que la demande est conforme, alors j'ajoute l'utilisateur en ami en bdd.<br><br><br>
 > Voici à quoi ressemble les différentes notifcations:
 <br>
 <p align="center">
